@@ -1,6 +1,6 @@
 #Twilio Client quicker-starter.
 
-The source code and tutorial for the full system comes from the excellent Twilio Quickstart guide here: <https://www.twilio.com/docs/quickstart/ruby/client>
+The source code and tutorial for the full system comes from the excellent Twilio Quickstart guide here: <https://www.twilio.com/docs/quickstart/ruby/client> .  This is a great way to get a browser call going - you can use this app to make calls from the browser - to any browser or any phone number.
 
 If you follow that tutorial (which I highly encourage you to do so), you will have a full understanding of how to make phone calls from your browser, using the Twilio javascript client.  You will need to follow all the steps to have a local development environment, and walk through creating a Twilio client in the language of your choice (in this example Ruby).
 
@@ -58,13 +58,6 @@ Take your new Heroku URL (for example http://funky-monkey-567.herokuapp.com) and
 * Twilio App Voice Request URL: http://funky-monkey-567.herokuapp.com/voice. This is the action that will be called when a user presses the Dial button on the webpage.  
 
 ![TwimlApp](http://uploadir.com/u/ee82e4sm "TwimlApp")
-
-
-
-
- * Voie URL for the phone number you bought.  It will be set to http://funky-monkey-567.herokuapp.com/voice 
-   * This will direct inbound phone calls to this Twilio number to this site to ring in the  in the browser.
-
 
 
 ## BLAM BLAM!  

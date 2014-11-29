@@ -27,7 +27,7 @@ end
 
  
 post '/voice' do
-    number = params[:PhoneNumber] || params["From"]
+    number = params[:PhoneNumber] 
     response = Twilio::TwiML::Response.new do |r|
         # Should be your Twilio Number or a verified Caller ID
         r.Dial :callerId => caller_id do |d|
