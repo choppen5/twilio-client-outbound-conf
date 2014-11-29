@@ -39,7 +39,7 @@ You will be asked for a few parameters, all of which you have in hand from the p
 
 You have a new Heroku app, it's live, in the cloud, and free as long as it's running on one dyno.  
 
-It should work to render the HTML, but you will be missing some functionality, such as Dial and inbound calls - until you update your Twilio account to reference this new Heroku URL.
+It should work to render the HTML, but you will be missing some functionality, such as being able to Dial an external number.
 
 ![TwilioClient](http://uploadir.com/u/udmp7g31 "Twilio Client")
 

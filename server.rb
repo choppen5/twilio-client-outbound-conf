@@ -7,7 +7,7 @@ default_client = "charles"
 # Add a Twilio phone number or number verified with Twilio as the caller ID
 caller_id   = ENV['twilio_caller_id']
 account_sid = ENV['twilio_account_sid']
-auth_token  = ENV['twilio_account_token']
+auth_token  = ENV['twilio_auth_token']
 appsid      = ENV['twilio_app_id']
 
 get '/' do
@@ -27,7 +27,7 @@ end
 
  
 post '/voice' do
-    number = params[:PhoneNumber]
+    number = params[:PhoneNumber] || params["From"]
     response = Twilio::TwiML::Response.new do |r|
         # Should be your Twilio Number or a verified Caller ID
         r.Dial :callerId => caller_id do |d|

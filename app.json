@@ -7,7 +7,7 @@
     "twilio_account_sid": {
             "description": "Your Twilio Account Id"
     },
-    "twilio_account_token": {
+    "twilio_auth_token": {
             "description": "Your Twilio Account Token" 
     },
      "twilio_caller_id": {
