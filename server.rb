@@ -8,7 +8,7 @@ default_client = "charles"
 caller_id   = ENV['twilio_caller_id']
 account_sid = ENV['twilio_account_sid']
 auth_token  = ENV['twilio_account_token']
-appsid      = ENV['hello_monkey_appid']
+appsid      = ENV['twilio_app_id']
 
 get '/' do
     client_name = params[:client]

@@ -2,7 +2,7 @@
   "name": "hello monkey",
   "description": "Twilio client hello monkey ",
   "website": "https://github.com/choppen5/hello-monkey",
-  "success_url": "/blob/master/README.md",
+  "success_url": "/",
   "env": {
     "twilio_account_sid": {
             "description": "Your Twilio Account Id"

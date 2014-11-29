@@ -2,7 +2,7 @@
 
 The source code and tutorial for the full system comes from the excellent Twilio Quickstart guide here: <https://www.twilio.com/docs/quickstart/ruby/client>
 
-If you follow that tutorial (which I highly encourage you to do), you will have a full understanding of how to make phone calls from your browser, using the Twilio javascript client.  You will need to follow all the steps to have a local development environment, and walk through creating a Twilio client in the language of your choice (in this example Ruby).
+If you follow that tutorial (which I highly encourage you to do so), you will have a full understanding of how to make phone calls from your browser, using the Twilio javascript client.  You will need to follow all the steps to have a local development environment, and walk through creating a Twilio client in the language of your choice (in this example Ruby).
 
 But, if  you are feeling lazy, or in a hurry, you can use this source code to simply deploy to Heroku using the lovely [Heroku Button](https://blog.heroku.com/archives/2014/8/7/heroku-button). 
 
@@ -15,7 +15,7 @@ But, if  you are feeling lazy, or in a hurry, you can use this source code to si
 
 ### Twilio steps
 
-You will need after pressing the Heroku deploy button, so we will prepare by getting these values:
+You will need these after pressing the Deploy to Heroku button, so we will prepare by getting these values:
 
 - Log into your Twilio account, note the following items,
 	- Your Twilio Account Sid
@@ -28,7 +28,7 @@ You will need after pressing the Heroku deploy button, so we will prepare by get
 
 ### Heroku steps
 
-Now, you are ready to fearlessly Press the Heroku button. 
+Now, you are ready to fearlessly Press the Heroku button. This will ask for some variables (see above), create a new Heroku app, and deploy this source code to Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy) 
 
