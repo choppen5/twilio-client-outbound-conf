@@ -5,10 +5,10 @@ require 'twilio-ruby'
 # put your default Twilio Client name here, for when a phone number isn't given
 default_client = "jenny"
 # Add a Twilio phone number or number verified with Twilio as the caller ID
-caller_id = "+12055308729"
+caller_id   = ENV['twilio_caller_id']
 account_sid = ENV['twilio_account_sid']
-auth_token = ENV['twilio_account_token']
-appsid     = "APa3da1c430e51561a75d28c351da2d573"
+auth_token  = ENV['twilio_account_token']
+appsid      = ENV['hello_monkey_appid']
 
 get '/' do
     client_name = params[:client]

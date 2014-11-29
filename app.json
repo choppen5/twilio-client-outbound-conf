@@ -1,0 +1,20 @@
+{
+  "name": "hello monkey",
+  "description": "Twilio client hello monkey ",
+  "website": "https://github.com/choppen5/hello-monkey",
+  "success_url": "/blob/master/README.md",
+  "env": {
+    "twilio_account_sid": {
+            "description": "Your Twilio Account Id"
+    },
+    "twilio_account_token": {
+            "description": "Your Twilio Account Token" 
+    },
+     "twilio_caller_id": {
+            "description": "Must be a Twilio number in your account" 
+    },
+    "twilio_app_id": {
+            "description": "Application Id - you must create app in your Twilio Account -> Dev Tools ->  Twiml Apps"
+    }
+  }
+}
