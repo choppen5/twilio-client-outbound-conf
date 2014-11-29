@@ -3,7 +3,7 @@ require 'sinatra'
 require 'twilio-ruby'
  
 # put your default Twilio Client name here, for when a phone number isn't given
-default_client = "jenny"
+default_client = "charles"
 # Add a Twilio phone number or number verified with Twilio as the caller ID
 caller_id   = ENV['twilio_caller_id']
 account_sid = ENV['twilio_account_sid']
