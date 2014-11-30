@@ -22,7 +22,7 @@ You will need these after pressing the Deploy to Heroku button, so we will prepa
 	- Your Twilio Auth Token
 	- A Twilio Phone Number 
 	- Now, the hard one. Creating a new Twilio App.  In your Twilio account, navigate here
-	  - Account > Dev Tools > Twiml Apps.  
+	  - Account > Dev Tools > Twiml Apps (or <https://www.twilio.com/user/account/apps>).  
 	  - Press the "Create Twiml App" button.  Give your App a Friendly Name, such as "Hello Monkey". We will fill out the Voice URL later, after pressing the Heroku button.  
 		- After creating the Twiml App, note the App Sid (need to click on the name of the Twiml App to see the Application Sid).
 
@@ -39,7 +39,7 @@ You will be asked for a few parameters, all of which you have in hand from the p
 
 You have a new Heroku app, it's live, in the cloud, and free as long as it's running on one dyno.  
 
-It should work to render the HTML, but you will be missing some functionality, such as being able to Dial an external number.
+It should work to render the HTML BUT it WILL NOT WORK to dial a number until you complete the steps below, the "Post Heroku-deploy Twilio steps" .
 
 ![TwilioClient](http://uploadir.com/u/udmp7g31 "Twilio Client")
 
@@ -51,11 +51,14 @@ Say the Heroku URL created was:
 
 You will take that URL and go back into your Twilio account, and set update a few things
 	 
-### Post Heroku button Twilio steps
+### Post Heroku-deploy Twilio steps
 
-Take your new Heroku URL (for example http://funky-monkey-567.herokuapp.com) and update the following things in your Twilio account:
+Just one more step!  Take your new Heroku URL that you just created (for example http://funky-monkey-567.herokuapp.com) and:
 
-* Twilio App Voice Request URL: http://funky-monkey-567.herokuapp.com/voice. This is the action that will be called when a user presses the Dial button on the webpage.  
+* Locate the Twilio Twiml App application you created in the pre reqs (Find this in your Twilio account DevTools > Twiml Apps or <https://www.twilio.com/user/account/apps>)
+  * Update Twilio App Voice "Request URL": http://funky-monkey-567.herokuapp.com/voice. This is the action that will be called when a user presses the "Call" button on the webpage.  
+  
+  
 
 ![TwimlApp](http://uploadir.com/u/ee82e4sm "TwimlApp")
 
