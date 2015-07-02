@@ -1,6 +1,11 @@
 require 'rubygems'
 require 'sinatra'
 require 'twilio-ruby'
+require 'logger'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
  
 # put your default Twilio Client name here, for when a phone number isn't given
 default_client = "charles"
@@ -27,6 +32,7 @@ end
 
  
 post '/agent-join-conf' do
+    logger.debug("agent-join-conf request #{params}")
     agentname = params[:agentname] || default_client #:agentname passed from the agent connection
     response = Twilio::TwiML::Response.new do |r|
         r.Say "Please wait for the first customer call.", :voice => "alice"
@@ -39,6 +45,7 @@ post '/agent-join-conf' do
 end
 
 post '/customer-join-conf' do
+    logger.debug("customer-join-conf request #{params}")
     #do routing to find an agent, or use default
     #agentname = functiontofindavailibleagent
     agentname = default_client
