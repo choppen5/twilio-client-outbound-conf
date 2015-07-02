@@ -14,7 +14,7 @@
     Twilio.Device.setup("<%= token %>", {debug: true});
   
       Twilio.Device.ready(function (device) {
-        $("#log").text("Client '<%= client_name %>' is ready");
+        $("#log").text("Twilio Client is ready");
       });
   
       Twilio.Device.error(function (error) {
@@ -22,7 +22,7 @@
       });
   
       Twilio.Device.connect(function (conn) {
-        $("#log").text("Successfully established call");
+        $("#log").text("Successfully established - waiting for customer");
       });
   
       Twilio.Device.disconnect(function (conn) {
@@ -37,7 +37,7 @@
   
       function call() {
         // get the phone number or client to connect the call to
-        params = {"PhoneNumber": $("#number").val()};
+        params = {"agentname": "<%= client_name %>"};
         Twilio.Device.connect(params);
       }
   
@@ -48,16 +48,13 @@
   </head>
   <body>
     <button class="call" onclick="call();">
-      Call
+      Join Dialer
     </button>
   
     <button class="hangup" onclick="hangup();">
       Hangup
     </button>
   
-    <input type="text" id="number" name="number"
-      placeholder="Enter a phone number or client to call"/>
-  
-    <div id="log">Loading pigeons...</div>
+    <div id="log">Status...</div>
   </body>
 </html>

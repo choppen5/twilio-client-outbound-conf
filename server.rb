@@ -26,20 +26,29 @@ end
  
 
  
-post '/voice' do
-    number = params[:PhoneNumber] 
+post '/agent-join-conf' do
+    agentname = params[:agentname] || default_client #:agentname passed from the agent connection
     response = Twilio::TwiML::Response.new do |r|
-        # Should be your Twilio Number or a verified Caller ID
-        r.Dial :callerId => caller_id do |d|
-            # Test to see if the PhoneNumber is a number, or a Client ID. In
-            # this case, we detect a Client ID by the presence of non-numbers
-            # in the PhoneNumber parameter.
-            if /^[\d\+\-\(\) ]+$/.match(number)
-                d.Number(CGI::escapeHTML number)
-            else
-                d.Client number
-            end
+        r.Say "Please wait for the first customer call.", :voice => "alice"
+        r.Dial do |d|
+                d.Conference agentname, :beep => "onExit"
         end
     end
+    puts response.text
     response.text
 end
+
+post '/customer-join-conf' do
+    #do routing to find an agent, or use default
+    #agentname = functiontofindavailibleagent
+    agentname = default_client
+
+    response = Twilio::TwiML::Response.new do |r|
+        r.Dial do |d|
+                d.Conference agentname, :beep => "onExit"
+            end
+    end
+    puts response.text
+    response.text
+end
+
