@@ -9,6 +9,7 @@
     </script>
     <link href="//static0.twilio.com/packages/quickstart/client.css"
       type="text/css" rel="stylesheet" />
+    <script src="//js.pusher.com/2.2/pusher.min.js"></script>
     <script type="text/javascript">
   
     Twilio.Device.setup("<%= token %>", {debug: true});
@@ -44,6 +45,22 @@
       function hangup() {
         Twilio.Device.disconnectAll();
       }
+
+      function dial() {
+        
+        $.post("/make-dial-request", { "dialnumber": $("#dialer").val()}, function(data) {
+             //Todo: handle errors
+             //todo: make dial button disabled?
+          })    
+      }
+
+      var pusher = new Pusher("<%= pusher_key %>");
+      var channel = pusher.subscribe("<%= client_name %>");
+    
+      channel.bind('outbound_call', function(data) {
+          $("#log").text(data.message);
+          $("#log").css('color', 'red');
+      });
     </script>
   </head>
   <body>
@@ -56,5 +73,21 @@
     </button>
   
     <div id="log">Status...</div>
+
+    <div id="callog"></div>
+
+    <hr>
+    <h1>Dialer section</h1>
+    <input id="dialer" placeholder="+14155551212"></input>
+    <button onclick="dial();">
+      Start dialing customers
+    </button>
+    <p>
+      <i>#todo: - Make actual list application where multiple customers would be dialed by the server </i>
+    </p>
+    <p>
+      <i>#todo: - Make predictive dialing algorithm, currently connects one customer to one agent in a outbound call  </i>
+    </p>
+
   </body>
 </html>
