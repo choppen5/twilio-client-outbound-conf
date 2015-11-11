@@ -15,7 +15,7 @@ Building such an application on Twilio can lead to some of the more challenging 
 
 Preview dialing is considered merely clicking to dial on a list, agent clicks, call starts - as covered above.   A more advanced version of power-dialing is dialing, and connecting to an agent - but only doing it on a 1-1 basis, not predicting agent availability.  For that flow, you will want to use the conference room technique to reduce latency on outbound dialing for connected calls. 
 
-**Predictive Dialing** or auto dialing, on the other hand brings a lot of challenges that we will dive into. Predictive dialing is auto generating calls, once connected to a customer who answers, the customer connects to an available agent.  The ‘prediction’ is that an agent will be available for a call, and an algorithm decides how many calls to generate based on how many predicted agents will be available. 
+**Power Dialing** or auto dialing, on the other hand brings a lot of challenges that we will dive into. Predictive dialing is auto generating calls, once connected to a customer who answers, the customer connects to an available agent.  The ‘prediction’ is that an agent will be available for a call, and an algorithm decides how many calls to generate based on how many predicted agents will be available. 
 
 Predictive dialing mostly comes down to efficiency - a machine can dial more numbers and deliver more total calls than agents could do manually.  But if you are going to implement predictive dialing you have few areas of concern.  This article will deep dive on one of them in particular - the optimal call flow for delivering the call to the agent.  The others will be touched on at a high level.
 
