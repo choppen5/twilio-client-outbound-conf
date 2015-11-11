@@ -11,9 +11,9 @@ Many customers of Twilio create outbound dialing call center applications on Twi
 
 Building such an application on Twilio can lead to some of the more challenging application design problems, so this article aims to cover some best practices and tips as you are looking at implementing outbound dialing, particularly predictive or automated dialing, and point out pitfalls you will want to avoid while buildings.
 
-**Start with the easy stuff**:  Power dialing. Power dialing in call center terms is the act of an agent viewing a prospect before calling them (as opposed to being automatically connected without dialing).   The agent initiates the dial, usually by clicking on a link in a web/software application that actually dials the customer.    It is pretty easy to do (if you can implement the [Twilio Client Quickstart](https://www.twilio.com/docs/quickstart/ruby/client), you are most of the way there), so we won’t dwell on that part.   
+**Start with the easy stuff**:  Preview dialing.  Preview dialing in call center terms is the act of an agent viewing a prospect before calling them (as opposed to being automatically connected without dialing).   The agent initiates the dial, usually by clicking on a link in a web/software application that actually dials the customer.    It is pretty easy to do (if you can implement the [Twilio Client Quickstart](https://www.twilio.com/docs/quickstart/ruby/client), you are most of the way there), so we won’t dwell on that part.   
 
-Power dialing is considered merely clicking to dial on a list, agent clicks, call starts - as covered above.   A more advanced version of power-dialing is dialing, and connecting to an agent - but only doing it on a 1-1 basis, not predicting agent availability.  For that flow, you will want to use the conference room technique to reduce latency on outbound dialing for connected calls. 
+Preview dialing is considered merely clicking to dial on a list, agent clicks, call starts - as covered above.   A more advanced version of power-dialing is dialing, and connecting to an agent - but only doing it on a 1-1 basis, not predicting agent availability.  For that flow, you will want to use the conference room technique to reduce latency on outbound dialing for connected calls. 
 
 **Predictive Dialing** or auto dialing, on the other hand brings a lot of challenges that we will dive into. Predictive dialing is auto generating calls, once connected to a customer who answers, the customer connects to an available agent.  The ‘prediction’ is that an agent will be available for a call, and an algorithm decides how many calls to generate based on how many predicted agents will be available. 
 
@@ -25,7 +25,12 @@ Generally with a predictive/auto dialer you will follow these steps:
 
 2. Use [Twilio REST API](https://www.twilio.com/docs/api/rest) and your own application logic to generate calls.  For example, this API call creates an outbound call.  
 
-curl -X POST 'https://api.twilio.com/2010-04-01/Accounts/AC11ecc097921ec18b6c078c24007cccc/Calls.json' \--data-urlencode 'To=+14155551212'  \--data-urlencode 'From=+19292444344'  \-d 'Url=http://yourserver.com/twiliourl'  \-d 'Method=POST  \-u AC11ecc097921ec18b6c078c2400xxxxx:[AuthToken]
+curl -X POST 'https://api.twilio.com/2010-04-01/Accounts/AC11ecc097921ec18b6c078c24007cccc/Calls.json' \
+--data-urlencode 'To=+14155551212'  \
+--data-urlencode 'From=+19292444344'  \
+-d 'Url=http://yourserver.com/twiliourl'  \
+-d 'Method=POST  \
+-u AC11ecc097921ec18b6c078c2400xxxxx:[AuthToken]
 
 Your application server will typically generate a request like this from you list of dialable numbers.   Once the customer is contacted, in this case "+14155551212", a request will be sent to the URL specified ([http://yourserver.com/twiliourl](http://yourserver.com/twiliourl)) to recieve instructions on how to route this call now that it has been answered.
 
