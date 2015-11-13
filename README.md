@@ -21,10 +21,10 @@ Predictive dialing mostly comes down to efficiency - a machine can dial more num
 
 Generally with a predictive/auto dialer you will follow these steps:
 
-1.  Create an application for an agent to accept calls and get customer context in a browser - using [Twilio Client](https://www.twilio.com/webrtc), embedded in your application of choice is the recommendation. This allows you to provide full context to the agent about who they are calling, in addtion to other advantages.
+"1."  Create an application for an agent to accept calls and get customer context in a browser - using [Twilio Client](https://www.twilio.com/webrtc), embedded in your application of choice is the recommendation. This allows you to provide full context to the agent about who they are calling, in addtion to other advantages.
 
-2. Use [Twilio REST API](https://www.twilio.com/docs/api/rest) and your own application logic to generate calls.  For example, this API call creates an outbound call.  
-
+"2." Use [Twilio REST API](https://www.twilio.com/docs/api/rest) and your own application logic to generate calls.  For example, this API call creates an outbound call.  
+ 
 curl -X POST 'https://api.twilio.com/2010-04-01/Accounts/AC11ecc097921ec18b6c078c24007cccc/Calls.json' \
 --data-urlencode 'To=+14155551212'  \
 --data-urlencode 'From=+19292444344'  \
@@ -35,12 +35,11 @@ curl -X POST 'https://api.twilio.com/2010-04-01/Accounts/AC11ecc097921ec18b6c078
 Your application server will typically generate a request like this from you list of dialable numbers.   Once the customer is contacted, in this case "+14155551212", a request will be sent to the URL specified ([http://yourserver.com/twiliourl](http://yourserver.com/twiliourl)) to recieve instructions on how to route this call now that it has been answered.
 
 	
-
-3. So your customer has answered the call, and [http://yourserver.com/twiliourl](http://yourserver.com/twiliourl) will need to return [TwiML](https://www.twilio.com/docs/api/twiml) to instruct Twilio which agent to connect to, and how.  And it must be *fast*.  A customer answers, says ‘hello’ - you want that routed to an agent from the beginning. The longer a customer waits after answering before hearing an agent the more likely they will hang up.  Ideally, as soon as the customer starts speaking and saying ‘Hello’ - the agent will already be listening and ready to talk.
+"3." So your customer has answered the call, and [http://yourserver.com/twiliourl](http://yourserver.com/twiliourl) will need to return [TwiML](https://www.twilio.com/docs/api/twiml) to instruct Twilio which agent to connect to, and how.  And it must be *fast*.  A customer answers, says ‘hello’ - you want that routed to an agent from the beginning. The longer a customer waits after answering before hearing an agent the more likely they will hang up.  Ideally, as soon as the customer starts speaking and saying ‘Hello’ - the agent will already be listening and ready to talk.
 
 ![image alt text](image_0.png)
 
-4.  Predictive dialing algorithm - Your application is ‘predicting’ an agent will be ready when a customer answers.  So it needs to monitor the agents who are available, average talk time, and dial success rate for your list to determine how many calls to generate.  Or you could start with a rather simple algorithm, like only dialing calls when agents are available.  We won’t go into all the options here, instead focus on #3 - optimal call flow for connecting a dialed customer to an agent.
+"4."  Predictive dialing algorithm - Your application is ‘predicting’ an agent will be ready when a customer answers.  So it needs to monitor the agents who are available, average talk time, and dial success rate for your list to determine how many calls to generate.  Or you could start with a rather simple algorithm, like only dialing calls when agents are available.  We won’t go into all the options here, instead focus on #3 - optimal call flow for connecting a dialed customer to an agent.
 
 Agent persistent **<Conference>**
 
